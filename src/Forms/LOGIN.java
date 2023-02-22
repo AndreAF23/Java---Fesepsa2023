@@ -65,7 +65,7 @@ public class LOGIN extends javax.swing.JFrame {
             if(entrada==true){
                 usuariobd=jTextField1.getText().trim();
                 //System.out.println(usuariobd);
-                MenuSerio abrir = new MenuSerio();
+                Menu abrir = new Menu();
                 abrir.setVisible(true);
                 this.setVisible(false);
                 //JOptionPane.showMessageDialog(null,"Bienvenido Don " + Nombre);

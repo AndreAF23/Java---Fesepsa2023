@@ -288,7 +288,7 @@ public class Saldos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        MenuSerio abrir = new MenuSerio();
+        Menu abrir = new Menu();
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed

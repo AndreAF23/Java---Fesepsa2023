@@ -275,7 +275,7 @@ public class Consulta extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        MenuSerio abrir = new MenuSerio();
+        Menu abrir = new Menu();
             abrir.setVisible(true);
             this.setVisible(false);
         

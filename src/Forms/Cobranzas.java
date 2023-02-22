@@ -412,7 +412,7 @@ public void llenadodetabla(){
     }//GEN-LAST:event_jComboBox1MousePressed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        MenuSerio abrir = new MenuSerio();
+        Menu abrir = new Menu();
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
