@@ -4,16 +4,9 @@
  */
 package Forms;
 
-import Clases.LlenarPDF;
 import Clases.LlenarTabla;
 import Clases.LlenarTexto;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import static net.sf.jasperreports.engine.util.JRLoader.getResource;
-import net.sf.jasperreports.view.JasperViewer;
 import static Forms.Cobranzas.retorno;
 
 /**
