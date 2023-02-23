@@ -36,7 +36,7 @@ public class MigracionVentas extends javax.swing.JFrame {
         PegarExcel myAd1 = new PegarExcel(jTable1);
         PegarExcel myAd2 = new PegarExcel(jTable2);
     }
-
+    private boolean faltancods=false;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -319,12 +319,13 @@ public class MigracionVentas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String strcons="(",rpta="";
-        
+        faltancods = false;
         VerificarCodigos ver = new VerificarCodigos();
         rpta=ver.ver(jTable2,1);
         //JOptionPane.showMessageDialog(null,rpta);
         if(rpta.contains("Faltan")){
             JOptionPane.showMessageDialog(null,"" + rpta);
+            faltancods=true;
         }
         if(rpta.contains("COMPLETOS")){
             JOptionPane.showMessageDialog(null,"" + rpta);
@@ -386,8 +387,6 @@ public class MigracionVentas extends javax.swing.JFrame {
                             fichero2.write(contenido2);
                             fichero2.close();
                             
-                            
-                            
                     }else{
                         break;
                     } 
@@ -410,8 +409,20 @@ public class MigracionVentas extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Menu abrir = new Menu();
-        abrir.setVisible(true);
-        this.setVisible(false);
+        if(faltancods==true){
+            int input = JOptionPane.showConfirmDialog(null, "Terminó de registrar las ventas?");
+            if(input==0){
+                abrir.setVisible(true);
+                this.setVisible(false);
+            }
+            if(input==1){
+                abrir.setVisible(true);
+                //this.setVisible(true);
+            }
+        }else{
+            abrir.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
