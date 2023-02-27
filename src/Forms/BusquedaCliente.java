@@ -186,7 +186,7 @@ public class BusquedaCliente extends javax.swing.JFrame {
         }else{
             codcliente=jTable1.getValueAt(seleccion,0).toString();
             if(retorno=="Saldos"){
-                Saldos abrir = new Saldos();
+                EstadoCuenta abrir = new EstadoCuenta();
                 abrir.setVisible(true);
                 this.setVisible(false);
             }
@@ -206,7 +206,7 @@ public class BusquedaCliente extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(retorno=="Saldos"){
-            Saldos abrir = new Saldos();
+            EstadoCuenta abrir = new EstadoCuenta();
             abrir.setVisible(true);
             this.setVisible(false);
         }
