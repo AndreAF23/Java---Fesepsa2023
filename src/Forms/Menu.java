@@ -385,7 +385,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6MousePressed
 
     private void jMenuItem8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem8MousePressed
-        Saldos abrir = new Saldos();
+        EstadoCuenta abrir = new EstadoCuenta();
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem8MousePressed
