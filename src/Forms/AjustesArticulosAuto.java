@@ -97,9 +97,9 @@ public class AjustesArticulosAuto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(72, 72, 72)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -158,6 +158,7 @@ public class AjustesArticulosAuto extends javax.swing.JFrame {
             }
                 GenerarLog gen = new GenerarLog();
                 gen.Log("RegAjusteArticulo","03_AJUSTES", contenido);
+                JOptionPane.showMessageDialog(null,"Ajustes Realizado Correctamente");
         }
         if(rpta.contains("Faltan")){
             JOptionPane.showMessageDialog(null,"" + rpta);

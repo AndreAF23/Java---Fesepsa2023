@@ -9,6 +9,8 @@
 	<parameter name="TLF" class="java.lang.String"/>
 	<parameter name="CORR" class="java.lang.String"/>
 	<parameter name="VEND" class="java.lang.String"/>
+	<parameter name="TotalSoles" class="java.lang.String"/>
+	<parameter name="TotalDolares" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -27,175 +29,344 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="170" splitType="Stretch">
-			<staticText>
-				<reportElement x="150" y="10" width="263" height="40" uuid="8df79a27-d05f-40f5-94c7-bfa0c22804ec"/>
-				<textElement>
-					<font size="22" isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[ESTADO DE CUENTA]]></text>
-			</staticText>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="149" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-30" width="595" height="90" backcolor="#C3F5F7" uuid="e88448cf-f0ee-4dc2-9b27-93e8f16d6258"/>
+				<staticText>
+					<reportElement x="492" y="15" width="34" height="14" uuid="d10431a7-20ba-4bff-9f2b-88c8890401c9"/>
+					<textElement>
+						<font fontName="Microsoft YaHei UI"/>
+					</textElement>
+					<text><![CDATA[Fecha:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="90" width="595" height="1" uuid="acaf9ef7-6db6-42eb-9235-6cab519b24b7"/>
+				</line>
+				<staticText>
+					<reportElement x="120" y="29" width="350" height="40" uuid="9ac4292f-71ca-4116-b0c3-8cc1b9ccedf1"/>
+					<textElement>
+						<font fontName="Microsoft YaHei UI" size="22" isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[ESTADO DE CUENTA - CLIENTE]]></text>
+				</staticText>
+			</frame>
 			<textField>
-				<reportElement x="70" y="60" width="100" height="20" uuid="5f96e56e-0f48-4ee8-9260-bf03d6d4e87a"/>
+				<reportElement x="55" y="40" width="66" height="20" uuid="00561033-7173-41b4-922f-0e0a8d6c97db"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{CODC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="230" y="60" width="100" height="20" uuid="95aac734-2e5a-4e36-a68f-2579df946338"/>
+				<reportElement x="275" y="64" width="260" height="21" uuid="a752940b-82e7-4e86-b4c9-66a73f1d0c02"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{RZNS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="70" y="90" width="100" height="20" uuid="14b93ba8-9292-4d50-9626-1baff4015a71"/>
+				<reportElement x="55" y="65" width="120" height="20" uuid="559e954c-fd54-424f-92c9-93b61cf73415"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{RUC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="227" y="90" width="100" height="20" uuid="c507bf6f-fcb3-45d8-affb-b8fbe261a0cf"/>
+				<reportElement x="55" y="119" width="160" height="17" uuid="d8dc52a3-016a-4cd5-b764-0b38e5b0e041"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{DIR}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="70" y="120" width="100" height="20" uuid="300cc91a-551d-49e6-94e0-02019d469ade"/>
+				<reportElement x="55" y="89" width="100" height="20" uuid="904954b7-4614-4f4f-82e6-5f6c018df052"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{TLF}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="227" y="120" width="100" height="20" uuid="fd07947a-dca8-4deb-a6d8-0991eaecb29e"/>
+				<reportElement x="285" y="95" width="150" height="20" uuid="0da80223-4247-4d77-a17c-4c2a044fab9a"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{CORR}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="140" width="100" height="20" uuid="981066f0-a52e-4875-a6de-6f12c00ae781"/>
+				<reportElement x="285" y="119" width="140" height="17" uuid="82a1a29a-5c75-4dc1-a40a-9ceaf35fdf66"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{VEND}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="5" y="40" width="40" height="21" uuid="dfe7451f-9d3b-44a1-b0c5-28eadd765c6a"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Código:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="65" width="36" height="16" uuid="7c68728a-5e80-4c0e-8da7-b465e6be616a"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[RUC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="64" width="62" height="21" uuid="5d4a92f3-741a-47c6-a20b-30f136fd452a"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Razon Soc.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="89" width="47" height="16" uuid="7315ba85-4224-4908-a713-699629426818"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="95" width="41" height="20" uuid="051162a1-12c9-4989-8d94-ca90ea62d1ad"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Correo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-6" y="119" width="50" height="17" uuid="0afcb2ae-416e-44e6-9229-0ec9b3d28ae3"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="119" width="55" height="17" uuid="03d9b6cf-e13c-4baf-b463-1575e04908d1"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Vendedor:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="470" y="0" width="100" height="30" uuid="b56e6359-d79d-489a-b495-54318ebfae78"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="30" width="100" height="30" uuid="add20e21-0e12-44e9-b7b9-7724b02591cc"/>
+				<textElement textAlignment="Right">
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="35" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<staticText>
-				<reportElement x="472" y="10" width="40" height="13" uuid="1e19106a-02f7-4ad7-859e-3fe336c8aa51">
+				<reportElement x="478" y="10" width="40" height="13" uuid="1e19106a-02f7-4ad7-859e-3fe336c8aa51">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="938672e6-445f-42a4-8c10-cd82eed9c302"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Dolares]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="532" y="10" width="40" height="13" uuid="34691cb0-ac5e-4d13-873d-229c32b76c0d">
+				<reportElement x="530" y="10" width="40" height="13" uuid="34691cb0-ac5e-4d13-873d-229c32b76c0d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a71c0faf-fe7d-4560-96ac-53a2756eea27"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Prot.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="350" y="10" width="43" height="13" uuid="17e2e0ae-a790-406e-ac78-41691b3161c6">
+				<reportElement x="358" y="10" width="43" height="13" uuid="17e2e0ae-a790-406e-ac78-41691b3161c6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="95fb1956-eb24-4533-bb1a-304c391b3f38"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Ubica.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="10" width="40" height="13" uuid="22ac45e4-4988-4543-8a3f-ecd5283500bb">
+				<reportElement x="308" y="10" width="40" height="13" uuid="22ac45e4-4988-4543-8a3f-ecd5283500bb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e524649d-c6aa-4dec-87de-b560cb87c9f8"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Banco]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="10" width="60" height="13" uuid="f6cbe027-414b-47a3-bf0b-a7e30d3d281b">
+				<reportElement x="240" y="10" width="63" height="13" uuid="f6cbe027-414b-47a3-bf0b-a7e30d3d281b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0457adff-4a9f-4b3c-8e9e-5149cb4f3419"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Numer.Unic]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="10" width="33" height="13" uuid="81616f24-6d3c-441d-8910-49c85a64e580">
+				<reportElement x="180" y="10" width="50" height="13" uuid="81616f24-6d3c-441d-8910-49c85a64e580">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="baf669a3-46ce-4578-9d1a-c89bc4144418"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Venc.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="9" width="41" height="13" uuid="7ecef367-8e23-45bf-922a-84afd5a4c773">
+				<reportElement x="70" y="10" width="41" height="13" uuid="7ecef367-8e23-45bf-922a-84afd5a4c773">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="209580b2-60f6-4315-8b34-c7869fb8024c"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[NUM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-20" y="10" width="59" height="13" uuid="7a265135-ed07-4e5f-8c33-043c2e791626"/>
-				<text><![CDATA[Documento]]></text>
+				<reportElement x="-11" y="10" width="30" height="13" uuid="7a265135-ed07-4e5f-8c33-043c2e791626"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[Doc.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="40" y="10" width="50" height="13" uuid="00c1613e-e7ca-4e3d-9ae4-afc52f41bf97"/>
+				<reportElement x="20" y="10" width="50" height="13" uuid="00c1613e-e7ca-4e3d-9ae4-afc52f41bf97"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Serie]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="420" y="10" width="44" height="13" uuid="dce450d0-79c9-4c54-ad31-203a71ef2e93"/>
+				<reportElement x="418" y="10" width="44" height="13" uuid="dce450d0-79c9-4c54-ad31-203a71ef2e93"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<text><![CDATA[Soles]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="103" y="10" width="34" height="21" uuid="88b9264d-d696-4db2-8878-431d7314e26d">
+				<reportElement x="120" y="10" width="55" height="13" uuid="88b9264d-d696-4db2-8878-431d7314e26d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4198d05c-1a59-4984-b438-201d3669f4fc"/>
 				</reportElement>
-				<text><![CDATA[EMI]]></text>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[F. Emisión]]></text>
 			</staticText>
+			<line>
+				<reportElement x="-20" y="30" width="595" height="1" uuid="8041cf74-5a39-473a-aca2-73aad8c237cd"/>
+			</line>
+			<line>
+				<reportElement x="-20" y="1" width="595" height="1" uuid="c4e0a8a3-5eb0-4035-8292-87cee5d79a5b"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="77" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<textField>
-				<reportElement x="-20" y="10" width="50" height="21" uuid="681f9bfb-ed2c-4fb0-a629-ab5e79d4bdd9"/>
+				<reportElement x="-11" y="0" width="26" height="21" uuid="681f9bfb-ed2c-4fb0-a629-ab5e79d4bdd9"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{DOC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="10" width="50" height="21" uuid="e449ef96-b946-46c1-9ab1-af8bb8b5c00b">
+				<reportElement x="18" y="0" width="50" height="21" uuid="e449ef96-b946-46c1-9ab1-af8bb8b5c00b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37ee695f-b07e-43f2-8fab-4625f07c7cb3"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{SER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="420" y="10" width="60" height="21" uuid="bbc5bcdc-bcce-47bd-99bb-5b33198e8514">
+				<reportElement x="418" y="0" width="50" height="21" uuid="bbc5bcdc-bcce-47bd-99bb-5b33198e8514">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="650bdb9e-52b8-4e09-8c40-da0f99a2f7fe"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{SOL}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="480" y="10" width="50" height="21" uuid="ff1b0333-19ff-4a12-bfdf-ed4cb64686b4">
+				<reportElement x="478" y="0" width="50" height="21" uuid="ff1b0333-19ff-4a12-bfdf-ed4cb64686b4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="938672e6-445f-42a4-8c10-cd82eed9c302"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{DOL}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="532" y="10" width="40" height="21" uuid="09298022-b6fe-4318-871d-7d72ea296ff2">
+				<reportElement x="530" y="0" width="40" height="21" uuid="09298022-b6fe-4318-871d-7d72ea296ff2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a71c0faf-fe7d-4560-96ac-53a2756eea27"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{PRO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="360" y="10" width="53" height="21" uuid="60778953-950d-444c-8e35-266606cd0765">
+				<reportElement x="358" y="0" width="53" height="21" uuid="60778953-950d-444c-8e35-266606cd0765">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="95fb1956-eb24-4533-bb1a-304c391b3f38"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{UBI}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="10" width="50" height="21" uuid="3f121e21-97af-4be5-b3b9-338366872065">
+				<reportElement x="308" y="0" width="50" height="21" uuid="3f121e21-97af-4be5-b3b9-338366872065">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e524649d-c6aa-4dec-87de-b560cb87c9f8"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{BAN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="245" y="10" width="64" height="21" uuid="ecf236a7-54ce-4d0c-b8ed-e98160f93ec2">
+				<reportElement x="238" y="0" width="69" height="21" uuid="ecf236a7-54ce-4d0c-b8ed-e98160f93ec2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0457adff-4a9f-4b3c-8e9e-5149cb4f3419"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{NUMU}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="200" y="8" width="43" height="21" uuid="5ebfbbc6-0daf-477a-85d8-25fae2f0cc89">
+				<reportElement x="178" y="0" width="50" height="21" uuid="5ebfbbc6-0daf-477a-85d8-25fae2f0cc89">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="baf669a3-46ce-4578-9d1a-c89bc4144418"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{VEN}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="11" width="48" height="18" uuid="f56c8877-0d79-41a7-9f21-73738d1651d7">
+				<reportElement x="70" y="0" width="48" height="21" uuid="f56c8877-0d79-41a7-9f21-73738d1651d7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ed59b79d-001c-430e-a544-f296dce6a0b3"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{NUM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="92" y="7" width="56" height="23" uuid="fa0c8e1d-6f86-46fe-97be-af4cc327bb84">
+				<reportElement x="121" y="0" width="56" height="21" uuid="fa0c8e1d-6f86-46fe-97be-af4cc327bb84">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4198d05c-1a59-4984-b438-201d3669f4fc"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{EMI}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -207,6 +378,31 @@
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="67" splitType="Stretch">
+			<rectangle>
+				<reportElement x="410" y="16" width="131" height="41" uuid="7bc1a3ca-e1d9-47e4-8e80-2fc762c5e70c"/>
+			</rectangle>
+			<textField>
+				<reportElement x="425" y="27" width="43" height="19" uuid="04664aaa-a12b-455b-9c7c-539c08108500"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TotalSoles}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="27" width="48" height="19" uuid="f32912c3-ab7a-44d1-aa49-5ad807928de4"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TotalDolares}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="30" width="62" height="16" uuid="d7b4fe3e-dabd-4299-ba0e-3562019c12f7"/>
+				<textElement>
+					<font fontName="Microsoft YaHei UI"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>
