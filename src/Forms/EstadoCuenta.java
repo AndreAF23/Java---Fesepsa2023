@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Forms;
-
 import Clases.DatosReportePDF;
 import Clases.EjecutarQuery;
 import Clases.LlenarTabla;
@@ -349,6 +348,11 @@ public class EstadoCuenta extends javax.swing.JFrame {
             consulta = "SELECT NombreVendedor FROM Vendedores WHERE CodigoVendedor='" + exec.ejecutar(consulta) + "'";
             parametros.put("VEND",exec.ejecutar(consulta));
             
+            //PARAMETROS TOTALES DEL REPORTE
+            Double soles = Math.round(Double.parseDouble(jTextField4.getText()) * 100.0) / 100.0;
+            Double dolares = Math.round(Double.parseDouble(jTextField3.getText()) * 100.0) / 100.0;
+            parametros.put("TotalSoles", soles.toString());
+            parametros.put("TotalDolares", dolares.toString());
             JasperPrint print = JasperFillManager.fillReport(reporte,parametros,new JRBeanCollectionDataSource(listap));
             JasperViewer.viewReport(print,false);
         }catch(JRException e){
