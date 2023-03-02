@@ -231,7 +231,7 @@ public class TipoCambio extends javax.swing.JFrame {
                 Date fecha1=jDateChooser1.getDate();
                 String fechaprueba=fecha1.toString();
                 System.out.println(fecha1);
-                SimpleDateFormat formatofecha = new SimpleDateFormat("yyyy-mm-dd");
+                SimpleDateFormat formatofecha = new SimpleDateFormat("yyyy-MM-dd");
                 fecha=formatofecha.format(fecha1);
                 System.out.println(fechaprueba.substring(4, 6));
             if (fechaprueba.substring(4, 7).equals("Dec")){
@@ -282,7 +282,7 @@ public class TipoCambio extends javax.swing.JFrame {
               }
               try {
                   String consulta = "INSERT INTO contab.dbo.TipoCambio VALUES('" + (fecha) + "'," + (Sventa) + "," + (Scompra) + ")";
-                  System.out.println(consulta);
+                  //System.out.println(consulta);
                   int elementosInsertados = sql.executeUpdate(consulta);
                   JOptionPane.showMessageDialog(null, "Se insertó correctamente");
 
