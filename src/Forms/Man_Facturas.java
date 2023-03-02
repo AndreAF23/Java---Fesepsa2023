@@ -4,6 +4,7 @@
  */
 package Forms;
 
+import Clases.EjecutarQuery;
 import Clases.LlenarTabla;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
+
 /**
  *
  * @author aazañero
@@ -25,17 +27,17 @@ public class Man_Facturas extends javax.swing.JFrame {
         initComponents();
         Clases.Conecx con = new Clases.Conecx();
         Statement sql = null;
-        
-        try{
+
+        try {
             sql = con.Conectarse().createStatement();
-            String consulta="SELECT Serie FROM Correlativos Where Estado='A' AND TipoDocumento IN ('01','03')";
+            String consulta = "SELECT Serie FROM Correlativos Where Estado='A' AND TipoDocumento IN ('01','03')";
             ResultSet rs = sql.executeQuery(consulta);
-            while(rs.next()){
-               jComboBox1.addItem(rs.getString(1));
+            while (rs.next()) {
+                jComboBox1.addItem(rs.getString(1));
             }
             rs.close();
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Error: " + ex.toString());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
         }
     }
 
@@ -61,6 +63,7 @@ public class Man_Facturas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -140,17 +143,29 @@ public class Man_Facturas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, -1, -1));
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Selecciones un Item","IVAN ARIAS","DIANA BOCANEGRA"}));
+        jComboBox2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBox2PopupMenuWillBecomeVisible(evt);
+            }
+        });
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 110, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Clases.Conecx con = new Clases.Conecx();
         Statement sql = null;
-        String serie=(String)jComboBox1.getSelectedItem();
-        String numero=jTextField1.getText();
-        
+        String serie = (String) jComboBox1.getSelectedItem();
+        String numero = jTextField1.getText();
+
         String consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 1,'" + serie + "','" + numero + "'";
-        System.out.println(consulta);
+        //System.out.println(consulta);
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         LlenarTabla lleno = new LlenarTabla();
         lleno.llenar(jTable1, consulta);
@@ -176,63 +191,88 @@ public class Man_Facturas extends javax.swing.JFrame {
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null,"Error: " + ex.toString());
         }*/
-            
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-        String numerobus="",seriebus="";
+        String numerobus = "", seriebus = "";
         int seleccion = -1;
-        seleccion=jTable1.getSelectedRow();
+        seleccion = jTable1.getSelectedRow();
         Clases.Conecx con = new Clases.Conecx();
-        if(seleccion!=-1){
-            numerobus = (String)jTable1.getValueAt(seleccion, 0);
-            seriebus = (String)jTable1.getValueAt(seleccion, 1);
+        if (seleccion != -1) {
+            numerobus = (String) jTable1.getValueAt(seleccion, 0);
+            seriebus = (String) jTable1.getValueAt(seleccion, 1);
         }
         Statement sql = null;
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-   
-            numerobus = (String)jTable1.getValueAt(seleccion, 0);
-            seriebus = (String)jTable1.getValueAt(seleccion, 1);
-        
-            try{
-               String consulta="EXEC [dbo].[AF_MANAGE_FACTURAS] 2,'" + numerobus + "','" + seriebus + "'";
-               sql = con.Conectarse().createStatement();
-               ResultSet rs = sql.executeQuery(consulta);
-                    modelo.setRowCount(0);
-                    while(rs.next()){
-                    Vector v = new Vector();
-                    v.add(rs.getString(1));
-                    v.add(rs.getString(2));
-                    v.add(rs.getString(3));
-                    modelo.addRow(v);      
-                    jTable2.setModel(modelo);
-                    }
-                }catch(SQLException ex){
-                    JOptionPane.showMessageDialog(null,"Error: " + ex.toString());
-                }
-            
+
+        numerobus = (String) jTable1.getValueAt(seleccion, 0);
+        seriebus = (String) jTable1.getValueAt(seleccion, 1);
+
+        try {
+            String consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 2,'" + numerobus + "','" + seriebus + "'";
+            sql = con.Conectarse().createStatement();
+            ResultSet rs = sql.executeQuery(consulta);
+            modelo.setRowCount(0);
+            while (rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                modelo.addRow(v);
+                jTable2.setModel(modelo);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+        }
+
     }//GEN-LAST:event_jTable1MousePressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Statement sql = null;
+        String autorizador = "";
         int seleccion = -1;
-        seleccion=jTable1.getSelectedRow();
-        
-        if(seleccion!=-1){
-            String numerobus = (String)jTable1.getValueAt(seleccion, 0);
-            String seriebus = (String)jTable1.getValueAt(seleccion, 1);
-            try{
-               Clases.Conecx con = new Clases.Conecx();
-               String consulta="EXEC [dbo].[AF_MANAGE_FACTURAS] 3,'" + numerobus + "','" + seriebus + "'";
-               sql = con.Conectarse().createStatement();
-               ResultSet rs = sql.executeQuery(consulta);
-                    while(rs.next()){
-                    JOptionPane.showMessageDialog(null,""+rs.getString(1));    
+        seleccion = jTable1.getSelectedRow();
+        autorizador = (String) jComboBox2.getSelectedItem();
+        if (seleccion != -1) {
+            if (autorizador.contains("Seleccione")) {
+                JOptionPane.showMessageDialog(null, "Seleccione un autorizador");
+            } else {
+                String numerobus = (String) jTable1.getValueAt(seleccion, 0);
+                String seriebus = (String) jTable1.getValueAt(seleccion, 1);
+                try {
+                    EjecutarQuery exec = new EjecutarQuery();
+                    String consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 4,'" + numerobus + "','" + seriebus + "'";
+                    String id = exec.ejecutar(consulta);
+                    //System.out.println(consulta);
+                    //System.out.println(id);
+                    switch (autorizador) {
+                        case "IVAN ARIAS":
+                            autorizador = "iarias";
+                            break;
+                        case "DIANA BOCANEGRA":
+                            autorizador = "iarias";
+                            break;
+                        default:
+                            autorizador = "otros";
+                            break;
                     }
-                }catch(SQLException ex){
-                    JOptionPane.showMessageDialog(null,"Error: " + ex.toString());
+                    consulta = "EXEC [dbo].[AF_MANAGE_CCOBRAR] '2','','',''," + id + ",'" + autorizador + "'";
+                    consulta = exec.ejecutar(consulta);
+                    Clases.Conecx con = new Clases.Conecx();
+                    consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 3,'" + numerobus + "','" + seriebus + "'";
+                    sql = con.Conectarse().createStatement();
+                    ResultSet rs = sql.executeQuery(consulta);
+                    while (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "" + rs.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un registro");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -240,6 +280,10 @@ public class Man_Facturas extends javax.swing.JFrame {
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox2PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox2PopupMenuWillBecomeVisible
+        jComboBox2.removeItem("Selecciones un Item");
+    }//GEN-LAST:event_jComboBox2PopupMenuWillBecomeVisible
 
     /**
      * @param args the command line arguments
@@ -282,6 +326,7 @@ public class Man_Facturas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -393,9 +393,12 @@ public class MigracionVentas extends javax.swing.JFrame {
                     
                 }
                 JOptionPane.showMessageDialog(null,"Se realizó la migración del Detalle correctamente con " + jTable2.getRowCount() + " filas");
-                EnviarCorreo envio = new EnviarCorreo();        
-                String fecha = (String)jTable1.getValueAt(0,2);
-                envio.enviar("a.azanero@fesepsa.pe", "Registro de Facturas " + fecha, "Se realizó con éxito el registro de Facturas en SIGO.\nSaludos");
+                if((String)jTable1.getValueAt(0,2)!=null){
+                    EnviarCorreo envio = new EnviarCorreo();        
+                    String fecha = (String)jTable1.getValueAt(0,2);
+                    envio.enviar("a.azanero@fesepsa.pe", "Registro de Facturas " + fecha, "Se realizó con éxito el registro de Facturas en SIGO.\nSaludos");
+                }
+                
             }catch(java.lang.NullPointerException ex){
                     System.out.println("Terminó de ejecutar la cabecera");
             }catch(SQLException ex){
