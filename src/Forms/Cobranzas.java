@@ -28,6 +28,7 @@ public class Cobranzas extends javax.swing.JFrame {
         try{
             LlenarComboBox llenado = new LlenarComboBox();
             llenado.llenar(jComboBox1, consultacomb);
+            jComboBox1.addItem("Sistemas");
         }catch(SQLException ex){
             System.out.println(ex.toString());
         }
