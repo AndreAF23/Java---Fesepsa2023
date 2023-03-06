@@ -355,8 +355,10 @@ public class EstadoCuenta extends javax.swing.JFrame {
             parametros.put("TotalDolares", dolares.toString());
             JasperPrint print = JasperFillManager.fillReport(reporte,parametros,new JRBeanCollectionDataSource(listap));
             JasperViewer.viewReport(print,false);
-        }catch(JRException e){
-            System.out.println(e.toString());
+        }catch(JRException ex){
+            System.out.println(ex.toString());
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null,"No hay datos para mostrar");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
     public void ejecucion(){
