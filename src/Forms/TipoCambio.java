@@ -4,7 +4,9 @@
  */
 package Forms;
 
+import Clases.ConvertirFecha;
 import Clases.LlenarTabla;
+import Clases.TipoCambioDiario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,6 +57,7 @@ public class TipoCambio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,10 +160,17 @@ public class TipoCambio extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton3.setText("Consultar");
+        jButton3.setText("Consultar BD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("TC SUNAT");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -190,7 +200,9 @@ public class TipoCambio extends javax.swing.JFrame {
                                 .addComponent(jButton4))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton5))
                                 .addGap(30, 30, 30)))))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -212,7 +224,9 @@ public class TipoCambio extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton5)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
@@ -256,7 +270,7 @@ public class TipoCambio extends javax.swing.JFrame {
                 //System.out.println(fecha1);
                 SimpleDateFormat formatofecha = new SimpleDateFormat("yyyy-MM-dd");
                 fecha=formatofecha.format(fecha1);
-                System.out.println(fechaprueba.substring(4, 6));
+                //System.out.println(fechaprueba.substring(4, 6));
             if (fechaprueba.substring(4, 7).equals("Dec")){
                 fecha=fecha.substring(0,5)+"12"+fecha.substring(7,10);
             }else{
@@ -358,6 +372,20 @@ public class TipoCambio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try{
+            ConvertirFecha convertx = new ConvertirFecha();
+            TipoCambioDiario dev = new TipoCambioDiario();
+            String fecha = jDateChooser1.getDate().toString();
+            fecha = convertx.convertir(fecha);
+            jTextField3.setText(dev.devolver("compra", fecha).toString());
+            jTextField2.setText(dev.devolver("venta", fecha).toString());
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null,"Revisar Fecha");
+        }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -412,6 +440,7 @@ public class TipoCambio extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

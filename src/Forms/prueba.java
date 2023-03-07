@@ -4,6 +4,17 @@
  */
 package Forms;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONObject;
 /**
  *
  * @author aazañero
@@ -26,54 +37,80 @@ public class prueba extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable1MousePressed(evt);
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jButton1)
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jButton1)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-        System.out.println("cambio");
-    }//GEN-LAST:event_jTable1MousePressed
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        postRequest();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void postRequest(){
+        try {
+            URL url = new URL("https://ruc.com.pe/api/v1/consultas");
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            conexion.setRequestMethod("POST");
+            //String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"comisiones_afp\":{\"periodo\":\"2022-02\"}}";
+            String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"tipo_cambio\": {\"moneda\":\"PEN\",\"fecha_inicio\":\"07/03/2023\",\"fecha_fin\":\"07/03/2023\"}}";
+            System.out.println(datos);
+            conexion.setRequestProperty("Content-Type","application/json");
+            conexion.setDoOutput(true);
+            OutputStream output = conexion.getOutputStream();
+            output.write(datos.getBytes());
+            output.flush();
+            output.close();
+            //System.out.println(conexion.getResponseCode());
+            System.out.println(conexion.getResponseMessage());
+            //
+            BufferedReader in = new BufferedReader(
+            new InputStreamReader(conexion.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+               response.append(inputLine);
+            }
+            in.close();
+            //print in String
+            System.out.println(response.toString());
+            //Read JSON response and print
+            //JSONObject myResponse = new JSONObject(response.toString());
+            //System.out.println("origin- "+myResponse.getString("nombre_o_razon_social"));
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            //System.out.println("No encontrado");
+        }
+    }
+    
     /**
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -109,7 +146,6 @@ public class prueba extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
