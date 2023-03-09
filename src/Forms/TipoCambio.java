@@ -6,7 +6,7 @@ package Forms;
 
 import Clases.ConvertirFecha;
 import Clases.LlenarTabla;
-import Clases.TipoCambioDiario;
+import Clases.TipoCambioSunat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -375,7 +375,7 @@ public class TipoCambio extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try{
             ConvertirFecha convertx = new ConvertirFecha();
-            TipoCambioDiario dev = new TipoCambioDiario();
+            TipoCambioSunat dev = new TipoCambioSunat();
             String fecha = jDateChooser1.getDate().toString();
             fecha = convertx.convertir(fecha);
             jTextField3.setText(dev.devolver("compra", fecha).toString());

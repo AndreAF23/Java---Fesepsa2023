@@ -328,7 +328,7 @@ public class ValorizacionStock extends javax.swing.JFrame {
         month = Integer.parseInt(fecha.substring(3, 5));
         int añomuestra = year;
         System.out.println(month);
-        for(int i=0;i<=year-2021;i++){
+        for(int i=0;i<=year-2023;i++){
             jComboBox1.addItem(String.valueOf(añomuestra));
             añomuestra--;
         }

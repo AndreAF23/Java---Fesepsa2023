@@ -9,6 +9,8 @@ import Clases.LlenarTabla;
 import Clases.LlenarTexto;
 import javax.swing.JOptionPane;
 import static Forms.Cobranzas.retorno;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -294,8 +296,15 @@ public class EstadoCuenta extends javax.swing.JFrame {
                     sumasoles=sumasoles + Double.parseDouble((String)jTable1.getValueAt(i,8));
                     sumadolares=sumadolares + Double.parseDouble((String)jTable1.getValueAt(i,9));
                 }
-                jTextField4.setText(Double.toString(sumasoles));
-                jTextField3.setText(Double.toString(sumadolares));
+                
+                DecimalFormatSymbols separador = new DecimalFormatSymbols();
+                separador.setDecimalSeparator('.');
+                DecimalFormat formato = new DecimalFormat("0.00",separador);
+                String soles=formato.format(sumasoles);
+                String dolares=formato.format(sumadolares);
+                
+                jTextField4.setText(soles);
+                jTextField3.setText(dolares);
             }    
         }else{
             JOptionPane.showMessageDialog(null,"Ingrese un cliente válido");

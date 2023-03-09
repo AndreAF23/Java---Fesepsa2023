@@ -17,19 +17,18 @@ import java.text.DecimalFormatSymbols;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONObject;
-
 /**
  *
  * @author aazañero
  */
-public class TipoCambioDiario {
-    public String devolver(String tipoconsulta,String fecha){
+public class prueba {
+    public static void main(String[ ] arg) {
         try {
             URL url = new URL("https://ruc.com.pe/api/v1/consultas");
             HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
             conexion.setRequestMethod("POST");
             //String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"comisiones_afp\":{\"periodo\":\"2022-02\"}}";
-            String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"tipo_cambio\": {\"moneda\":\"PEN\",\"fecha_inicio\":\"" + fecha + "\",\"fecha_fin\":\"" + fecha + "\"}}";
+            String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"tipo_cambio\": {\"moneda\":\"PEN\",\"fecha_inicio\":\"08/03/2023\",\"fecha_fin\":\"08/03/2023\"}}";
             //String datos = "{\"token\": \"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"ruc\": \"20100004080\"}";
             //System.out.println(datos);
             conexion.setRequestProperty("Content-Type","application/json");
@@ -58,21 +57,12 @@ public class TipoCambioDiario {
             
             Double compra=myResponse.getJSONArray("exchange_rates").getJSONObject(0).getDouble("compra");
             Double venta=myResponse.getJSONArray("exchange_rates").getJSONObject(0).getDouble("venta");
-            //formato de 3 decimales
-            DecimalFormatSymbols separador = new DecimalFormatSymbols();
-            separador.setDecimalSeparator('.');
-            DecimalFormat formato = new DecimalFormat("#.000",separador);
             
-            if(tipoconsulta.equals("compra")){
-                return formato.format(compra);
-            }else if(tipoconsulta.equals("venta")){
-                return formato.format(venta);
-            }
+            System.out.println(compra.toString());
         } catch (MalformedURLException ex) {
             System.out.println(ex.toString());
         } catch (IOException ex) {
             System.out.println(ex.toString());
         }
-        return null;
-    }
+      }
 }
