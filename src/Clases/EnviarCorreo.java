@@ -63,7 +63,6 @@ public class EnviarCorreo {
         }catch(MessagingException ey){
             System.out.println(ey.toString());
         }
-        
     }
     
     

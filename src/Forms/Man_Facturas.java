@@ -239,37 +239,40 @@ public class Man_Facturas extends javax.swing.JFrame {
             if (autorizador.contains("Seleccione")) {
                 JOptionPane.showMessageDialog(null, "Seleccione un autorizador");
             } else {
-                String numerobus = (String) jTable1.getValueAt(seleccion, 0);
-                String seriebus = (String) jTable1.getValueAt(seleccion, 1);
-                try {
-                    EjecutarQuery exec = new EjecutarQuery();
-                    String consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 4,'" + numerobus + "','" + seriebus + "'";
-                    String id = exec.ejecutar(consulta);
-                    //System.out.println(consulta);
-                    //System.out.println(id);
-                    switch (autorizador) {
-                        case "IVAN ARIAS":
-                            autorizador = "iarias";
-                            break;
-                        case "DIANA BOCANEGRA":
-                            autorizador = "iarias";
-                            break;
-                        default:
-                            autorizador = "otros";
-                            break;
-                    }
+                String seriebus = (String) jTable1.getValueAt(seleccion, 0);
+                String numerobus = (String) jTable1.getValueAt(seleccion, 1);
+                EjecutarQuery exec = new EjecutarQuery();
+                String consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 4,'" + seriebus + "','" + numerobus + "'";
+                String id = exec.ejecutar(consulta);
+                System.out.println(consulta);
+                //System.out.println(id);
+                switch (autorizador) {
+                    case "IVAN ARIAS":
+                        autorizador = "iarias";
+                        break;
+                    case "DIANA BOCANEGRA":
+                        autorizador = "iarias";
+                        break;
+                    default:
+                        autorizador = "otros";
+                        break;
+                }
+                try{
                     consulta = "EXEC [dbo].[AF_MANAGE_CCOBRAR] '2','','',''," + id + ",'" + autorizador + "'";
+                    System.out.println(consulta);
                     consulta = exec.ejecutar(consulta);
+                    System.out.println(consulta);
                     Clases.Conecx con = new Clases.Conecx();
-                    consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 3,'" + numerobus + "','" + seriebus + "'";
+                    consulta = "EXEC [dbo].[AF_MANAGE_FACTURAS] 3,'" + seriebus + "','" + numerobus + "'";
                     sql = con.Conectarse().createStatement();
                     ResultSet rs = sql.executeQuery(consulta);
                     while (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "" + rs.getString(1));
-                    }
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+                    JOptionPane.showMessageDialog(null, "" + rs.getString(1));
                 }
+                }catch(SQLException ex){
+                    System.out.println("Error:" + ex.toString());
+                }
+                
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un registro");
