@@ -34,7 +34,7 @@ public class prueba {
             HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
             conexion.setRequestMethod("POST");
             //String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"comisiones_afp\":{\"periodo\":\"2022-02\"}}";
-            String datos = "{\"token\":\"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"tipo_cambio\": {\"moneda\":\"PEN\",\"fecha_inicio\":\"" + fecha + "\",\"fecha_fin\":\"" + fecha + "\"}}";
+            String datos = "{\"token\":\"b5d2c740-eb62-4eb9-8654-8fca1ced1620-89616626-b102-441d-b839-435209fa89e4\",\"tipo_cambio\": {\"moneda\":\"PEN\",\"fecha_inicio\":\"" + fecha + "\",\"fecha_fin\":\"" + fecha + "\"}}";
             //String datos = "{\"token\": \"8d78b17f-4242-4fbf-8dfc-082285e4229f-b9ed83c4-02d5-48c2-a840-644694960c10\",\"ruc\": \"20100004080\"}";
             //System.out.println(datos);
             conexion.setRequestProperty("Content-Type","application/json");
