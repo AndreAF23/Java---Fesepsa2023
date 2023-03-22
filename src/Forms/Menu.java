@@ -45,6 +45,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -95,6 +97,32 @@ public class Menu extends javax.swing.JFrame {
                 jMenu2MouseClicked(evt);
             }
         });
+
+        jMenuItem19.setText("TipoCambio");
+        jMenuItem19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem19MousePressed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem19);
+
+        jMenuItem20.setText("Actualizar Token");
+        jMenuItem20.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
+            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
+                jMenuItem20MenuKeyPressed(evt);
+            }
+            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
+            }
+            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
+            }
+        });
+        jMenuItem20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem20MousePressed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem20);
+
         jMenuBar1.add(jMenu2);
 
         jMenu1.setText("Productos");
@@ -330,9 +358,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-        TipoCambio abrir = new TipoCambio();
-            abrir.setVisible(true);
-            this.setVisible(false);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -460,6 +485,22 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem18MousePressed
 
+    private void jMenuItem19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MousePressed
+        TipoCambio abrir = new TipoCambio();
+        abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem19MousePressed
+
+    private void jMenuItem20MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenuItem20MenuKeyPressed
+       
+    }//GEN-LAST:event_jMenuItem20MenuKeyPressed
+
+    private void jMenuItem20MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem20MousePressed
+        ActualizarTokenApi abrir = new ActualizarTokenApi();
+        abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem20MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -519,7 +560,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
