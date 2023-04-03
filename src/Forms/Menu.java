@@ -71,6 +71,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
 
         jMenu5.setText("jMenu5");
 
@@ -309,6 +310,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem7);
 
+        jMenuItem21.setText("Kárdex");
+        jMenuItem21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem21MousePressed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem21);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -501,6 +510,12 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem20MousePressed
 
+    private void jMenuItem21MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem21MousePressed
+        DatosKardex abrir = new DatosKardex();
+        abrir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem21MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -563,6 +578,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

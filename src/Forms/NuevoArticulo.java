@@ -7,6 +7,7 @@ package Forms;
 import Clases.DevolverMarca;
 import Clases.EjecutarQuery;
 import Clases.LlenarComboBox;
+import Clases.PegarExcel;
 import java.sql.SQLException;
 import Clases.VerificarCodUnit;
 import Clases.VerificarCodigos;
@@ -24,6 +25,7 @@ public class NuevoArticulo extends javax.swing.JFrame {
      */
     public NuevoArticulo() {
         initComponents();
+        PegarExcel myAd = new PegarExcel(jTable1);
         llenarmarcas();
     }
 
@@ -406,7 +408,7 @@ public class NuevoArticulo extends javax.swing.JFrame {
                 for(int i=0;i<jTable1.getRowCount();i++){
                     codart=(String)jTable1.getValueAt(i,0);
                     cantidad=(String)jTable1.getValueAt(i,1);
-                    consulta="[dbo].[AF_MANAGE_CRUDCOMBOS] 2,'','','" + codcombo + "','" + codart + "'," + cantidad;
+                    consulta="[dbo].[AF_MANAGE_CRUDCOMBOS] 2,'','','" + codcombo + "','','" + codart + "'," + cantidad;
                     //System.out.println(consulta);
                     String res2 = exec.ejecutar(consulta);
                     ejecutar=true;

@@ -382,13 +382,15 @@ public class Compras extends javax.swing.JFrame {
                     tc=jTextField4.getText();
                 }
                 consulta="EXEC JM_MANAGE_RCOMPRAS '" + prov + "','" + doc + "','" + fecha + "','" + doc + "','" + doc + "','S','" + proc + "','" + tc + "';";
+                System.out.println(consulta); 
                 res=exec.ejecutar(consulta);
                 gen.Log("MigRegCompras","01_RCOMPRAS", res);
                 
                 res="";
                 for(int i=0;i<jTable1.getRowCount();i++){
                     consulta="EXEC JM_MANAGE_RCOMPRAS_DET2 '" + prov + "','" + doc + "','" + fecha + "','" + doc + "','" + doc + "','" + jTable1.getValueAt(i,0) + "'," + jTable1.getValueAt(i,1) + "," + jTable1.getValueAt(i,2) + ";";
-                    res=exec.ejecutar(consulta);
+                   
+                   res=exec.ejecutar(consulta);
                     contenido=contenido + res + "\n";
                 }
                 

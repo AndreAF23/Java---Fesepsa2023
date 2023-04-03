@@ -27,7 +27,7 @@ public class ActualizarTokenApi extends javax.swing.JFrame {
         }else{
             jLabel3.setForeground(Color.red);
         }
-        
+        uso = uso + " días";
         jLabel3.setText(uso);
     }
 

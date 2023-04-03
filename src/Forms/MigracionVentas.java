@@ -409,6 +409,7 @@ public class MigracionVentas extends javax.swing.JFrame {
                     EnviarCorreo envio = new EnviarCorreo();        
                     String fecha = (String)jTable1.getValueAt(0,2);
                     envio.enviar("a.azanero@fesepsa.pe", "Registro de Facturas " + fecha, "Se realizó con éxito el registro de Facturas en SIGO.\nSaludos");
+                    envio.enviar("f.martinez@fesepsa.pe", "Registro de Facturas " + fecha, "Se realizó con éxito el registro de Facturas en SIGO.\nSaludos");
                 }
                 
             }catch(java.lang.NullPointerException ex){
