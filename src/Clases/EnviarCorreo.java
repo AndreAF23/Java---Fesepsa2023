@@ -41,7 +41,6 @@ public class EnviarCorreo {
     
     private void crearCorreo(){
         
-        
         mProperties.put("mail.smtp.host","smtp.gmail.com");
         mProperties.put("mail.smtp.ssl.trust","smtp.gmail.com");
         mProperties.setProperty("mail.smtp.starttls.enable","true");
@@ -65,8 +64,6 @@ public class EnviarCorreo {
         }
     }
     
-    
-    
     private void enviarCorreo(){
         try {
             Transport mTransport = mSession.getTransport("smtp");
@@ -74,7 +71,7 @@ public class EnviarCorreo {
             mTransport.sendMessage(mCorreo,mCorreo.getRecipients(Message.RecipientType.TO));
             mTransport.close();
             
-            JOptionPane.showMessageDialog(null,"Correo Enviado");
+            JOptionPane.showMessageDialog(null,"Correo Enviado a: " + emaildestino);
         } catch (NoSuchProviderException ex) {
             System.out.println(ex.toString());
         } catch(MessagingException ey){
